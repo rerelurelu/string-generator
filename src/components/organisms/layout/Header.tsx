@@ -8,6 +8,7 @@ export const Header: FC = memo(() => {
     <>
       <Flex
         as="nav"
+        w="100%"
         bg="gray.800"
         align="center"
         justify="space-between"
