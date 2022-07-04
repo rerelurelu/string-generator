@@ -11,7 +11,6 @@ import { CreateButton } from '../../atoms/button/createButton';
 export const InputField = () => {
   const [inputText, setInputText] = useState<string>('');
   const [digits, setDigits] = useState<string>('');
-  const outputCardList = useSelector((state: RootState) => state.outputCards.value);
   const dispatch = useDispatch();
 
   const onClickCreate = (inputText: string, digits: string) => {
