@@ -3,22 +3,21 @@ import { BsTrashFill } from 'react-icons/bs';
 import { FC, memo } from 'react';
 
 type Props = {
-  id: number;
   digits: string;
   text: string;
-  onClick: (id: number) => void;
+  onClick: () => void;
 };
 
 export const OutputCard: FC<Props> = memo((props) => {
-  const { id, digits, text, onClick } = props;
+  const { digits, text, onClick } = props;
   const { hasCopied, onCopy } = useClipboard(text);
 
   return (
     <Box
-      key={id}
       w="100%"
       h="280px"
       maxW={1200}
+      mt={10}
       bg="purple.800"
       borderRadius="10px"
       shadow="md"
@@ -31,7 +30,7 @@ export const OutputCard: FC<Props> = memo((props) => {
             w="80%"
             fontSize={20}
             size="md"
-            rows={6}
+            rows={5}
             resize="none"
             border="none"
             isReadOnly
@@ -60,7 +59,7 @@ export const OutputCard: FC<Props> = memo((props) => {
             pos="absolute"
             bottom={3}
             right={6}
-            onClick={() => onClick(id)}
+            onClick={onClick}
           />
         </Box>
       </VStack>

@@ -1,25 +1,29 @@
 import { Grid } from '@chakra-ui/react';
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteOutputCard } from '../../../features/outputCards';
+import { RootState } from '../../../main';
 import { OutputCard } from './outputCard/OutputCard';
 
 export const OutputField: FC = () => {
-  const dummyData = {
-    id: 1,
-    digits: '5',
-    text: 'sample',
-  };
+  const outputCardList = useSelector((state: RootState) => state.outputCards.value);
+  const dispatch = useDispatch();
 
-  const onClickDelete = (id: number) => {};
+  const onClickDelete = useCallback((id: string) => {
+    dispatch(deleteOutputCard({ id: id }));
+  }, []);
 
   return (
-    <Grid px={100} mt={10} justifyItems="center" alignItems="center">
-      <OutputCard
-        id={dummyData.id}
-        digits={dummyData.digits}
-        text={dummyData.text}
-        onClick={() => onClickDelete(dummyData.id)}
-      />
+    <Grid px={100} justifyItems="center" alignItems="center">
+      {outputCardList.map((outputCard) => (
+        <OutputCard
+          key={outputCard.id}
+          digits={outputCard.digits}
+          text={outputCard.text}
+          onClick={() => onClickDelete(outputCard.id)}
+        />
+      ))}
     </Grid>
   );
 };

@@ -1,9 +1,11 @@
 import { Box, Grid, HStack, Input, Divider } from '@chakra-ui/react';
 import { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuid } from 'uuid';
 
 import { addOutputCard } from '../../../features/outputCards';
 import { RootState } from '../../../main';
+import { generateText } from '../../../utils/GenerateText';
 import { CreateButton } from '../../atoms/button/createButton';
 
 export const InputField = () => {
@@ -13,11 +15,13 @@ export const InputField = () => {
   const dispatch = useDispatch();
 
   const onClickCreate = (inputText: string, digits: string) => {
+    const text: string = generateText(inputText, digits);
+
     dispatch(
       addOutputCard({
-        id: outputCardList.length,
+        id: uuid(),
         digits: digits,
-        text: inputText,
+        text: text,
       })
     );
     setInputText('');
