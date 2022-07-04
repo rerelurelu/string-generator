@@ -1,10 +1,9 @@
 import { Box, Grid, HStack, Input, Divider } from '@chakra-ui/react';
 import { ChangeEvent, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 
 import { addOutputCard } from '../../../features/outputCards';
-import { RootState } from '../../../main';
 import { generateText } from '../../../utils/GenerateText';
 import { CreateButton } from '../../atoms/button/createButton';
 
