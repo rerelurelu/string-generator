@@ -1,16 +1,17 @@
-import { Box, Button, IconButton, Textarea, useClipboard, VStack } from '@chakra-ui/react';
+import { Box, Button, IconButton, Text, Textarea, useClipboard, VStack } from '@chakra-ui/react';
 import { BsTrashFill } from 'react-icons/bs';
 import { FC, memo } from 'react';
 
 type Props = {
   id: number;
-  generatedText: string;
+  digits: string;
+  text: string;
   onClick: (id: number) => void;
 };
 
 export const OutputCard: FC<Props> = memo((props) => {
-  const { id, generatedText, onClick } = props;
-  const { hasCopied, onCopy } = useClipboard(generatedText);
+  const { id, digits, text, onClick } = props;
+  const { hasCopied, onCopy } = useClipboard(text);
 
   return (
     <Box
@@ -24,7 +25,7 @@ export const OutputCard: FC<Props> = memo((props) => {
       p={4}
       pos="relative"
     >
-      <VStack>
+      <VStack gap={4}>
         <Box w="100%" bg="gray.700" borderRadius="10px" pos="relative">
           <Textarea
             w="80%"
@@ -34,7 +35,7 @@ export const OutputCard: FC<Props> = memo((props) => {
             resize="none"
             border="none"
             isReadOnly
-            value={generatedText}
+            value={text}
           />
           <Button
             size="sm"
@@ -49,16 +50,19 @@ export const OutputCard: FC<Props> = memo((props) => {
             {hasCopied ? 'Copied ✨' : 'Copy'}
           </Button>
         </Box>
-        <IconButton
-          colorScheme="red"
-          aria-label="delete"
-          size="lg"
-          icon={<BsTrashFill fontSize={33} />}
-          pos="absolute"
-          bottom={3}
-          right={6}
-          onClick={() => onClick(id)}
-        />
+        <Box w="100%">
+          <Text fontSize={20}>桁数： {digits}</Text>
+          <IconButton
+            colorScheme="red"
+            aria-label="delete"
+            size="lg"
+            icon={<BsTrashFill fontSize={33} />}
+            pos="absolute"
+            bottom={3}
+            right={6}
+            onClick={() => onClick(id)}
+          />
+        </Box>
       </VStack>
     </Box>
   );
