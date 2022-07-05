@@ -27,10 +27,21 @@ export const OutputCard: FC<Props> = memo((props) => {
       <VStack gap={4}>
         <Box w="100%" bg="gray.700" borderRadius="10px" pos="relative">
           <Textarea
+            sx={{
+              '&::-webkit-scrollbar': {
+                width: '8px',
+                borderRadius: '8px',
+                backgroundColor: `rgba(0, 0, 0, 0.1)`,
+              },
+              '&::-webkit-scrollbar-thumb': {
+                borderRadius: '100px',
+                backgroundColor: `rgba(0, 0, 0, 0.15)`,
+              },
+            }}
             w="80%"
             fontSize={20}
             size="md"
-            rows={5}
+            rows={6}
             resize="none"
             border="none"
             isReadOnly
