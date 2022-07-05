@@ -13,27 +13,28 @@ export const InputField: FC = () => {
   const errMsg = {
     inputTextErrMsg: '* 繰り返したい文字を入力してください',
     digitsBlankErrMsg: '* 桁数に全角数字または半角数字を入力してください',
-    digitsNotNumberMsg: '* 桁数には全角数字または半角数字を入力してください',
+    digitsNotNumberErrMsg: '* 桁数には全角数字または半角数字を１以上の値で入力してください',
+    digitsLimitErrMsg: '* 桁数には１００００以下の値を入力してください',
   };
   const [inputText, setInputText] = useState<string>('');
   const [digits, setDigits] = useState<string>('');
   const [isInputTextErr, setIsInputTextErr] = useState<boolean>(false);
   const [isDigitsBlankErr, setIsDigitsBlankErr] = useState<boolean>(false);
   const [isDigitsNotNumberErr, setIsDigitsNotNumberErr] = useState<boolean>(false);
+  const [isDigitsLimitErr, setIsDigitsLimitErr] = useState<boolean>(false);
   const [isErr, setIsErr] = useState<boolean>(false);
   const dispatch = useDispatch();
 
   const onClickCreate = (inputText: string, digits: string): void => {
-    const { isInputTextError, isDigitsBlankError, isDigitsNotNumberError } = ValidateInputs(
-      inputText,
-      digits
-    );
+    const { isInputTextError, isDigitsBlankError, isDigitsNotNumberError, isDigitsLimitError } =
+      ValidateInputs(inputText, digits);
 
-    if (isInputTextError || isDigitsBlankError || isDigitsNotNumberError) {
+    if (isInputTextError || isDigitsBlankError || isDigitsNotNumberError || isDigitsLimitError) {
       setIsErr(true);
       setIsInputTextErr(isInputTextError);
       setIsDigitsBlankErr(isDigitsBlankError);
       setIsDigitsNotNumberErr(isDigitsNotNumberError);
+      setIsDigitsLimitErr(isDigitsLimitError);
     } else {
       const result: Result = generateText(inputText, digits);
 
@@ -90,7 +91,8 @@ export const InputField: FC = () => {
         <Box w="100%" maxW={1200} px={200} mt={5} color="red.500">
           {isInputTextErr ? <Text fontSize={16}>{errMsg.inputTextErrMsg}</Text> : null}
           {isDigitsBlankErr ? <Text fontSize={16}>{errMsg.digitsBlankErrMsg}</Text> : null}
-          {isDigitsNotNumberErr ? <Text fontSize={16}>{errMsg.digitsNotNumberMsg}</Text> : null}
+          {isDigitsNotNumberErr ? <Text fontSize={16}>{errMsg.digitsNotNumberErrMsg}</Text> : null}
+          {isDigitsLimitErr ? <Text fontSize={16}>{errMsg.digitsLimitErrMsg}</Text> : null}
         </Box>
       ) : null}
       <Divider w="90%" mt={16} />
