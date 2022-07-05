@@ -11,7 +11,7 @@ export const outputCardSlice = createSlice({
   initialState: { value: [] as outputCard[] },
   reducers: {
     addOutputCard: (state: any, action: PayloadAction<outputCard>) => {
-      state.value.push(action.payload);
+      state.value.unshift(action.payload);
     },
     deleteOutputCard: (state: any, action: any) => {
       state.value = state.value.filter((outputCard: any) => outputCard.id !== action.payload.id);
