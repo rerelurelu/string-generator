@@ -1,4 +1,4 @@
-import { Result } from '../types/Result';
+import { Result } from '../types/result';
 
 export const generateText = (inputText: string, digits: string): Result => {
   let text: string = '';
