@@ -2,13 +2,9 @@ import { Box, Button, IconButton, Text, Textarea, useClipboard, VStack } from '@
 import { BsTrashFill } from 'react-icons/bs';
 import { FC, memo } from 'react';
 
-type Props = {
-  digits: string;
-  text: string;
-  onClick: () => void;
-};
+import { OutputCardProps } from '../../../../types/outputCardProps';
 
-export const OutputCard: FC<Props> = memo((props) => {
+export const OutputCard: FC<OutputCardProps> = memo((props) => {
   const { digits, text, onClick } = props;
   const { hasCopied, onCopy } = useClipboard(text);
 
