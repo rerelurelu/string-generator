@@ -45,24 +45,25 @@ export const OutputCard: FC<OutputCardProps> = memo((props) => {
           />
           <Button
             size="sm"
-            color="purple.900"
-            bg="purple.500"
+            color="gray.700"
+            bg="purple.300"
             pos="absolute"
             top="10px"
             right="10px"
             ml={2}
+            _hover={{ opacity: 0.8 }}
             onClick={onCopy}
           >
             {hasCopied ? 'Copied ✨' : 'Copy'}
           </Button>
         </Box>
         <Box w="100%">
-          <Text fontSize={20}>桁数： {digits}</Text>
+          <Text fontSize={18}>桁数： {digits}</Text>
           <IconButton
             colorScheme="red"
             aria-label="delete"
-            size="lg"
-            icon={<BsTrashFill fontSize={33} />}
+            size="md"
+            icon={<BsTrashFill fontSize={30} />}
             pos="absolute"
             bottom={3}
             right={6}
