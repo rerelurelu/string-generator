@@ -8,11 +8,12 @@ import {
   ModalOverlay,
   Text,
 } from '@chakra-ui/react';
+import { FC, memo } from 'react';
 
-import { Description } from '../../types/Description';
+import { Description } from '../../types/description';
 import { ModalProps } from '../../types/modalProps';
 
-export const PrivacyPolicyModal = (props: ModalProps) => {
+export const PrivacyPolicyModal: FC<ModalProps> = memo((props) => {
   const desc: Description = {
     title: 'プライバシーポリシー',
     subTitle: '免責事項',
@@ -48,4 +49,4 @@ export const PrivacyPolicyModal = (props: ModalProps) => {
       </ModalContent>
     </Modal>
   );
-};
+});
