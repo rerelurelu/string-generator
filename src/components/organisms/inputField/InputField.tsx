@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 
 import { addOutputCard } from '../../../features/outputCards';
-import { Result } from '../../../types/Result';
 import { generateText } from '../../../utils/GenerateText';
 import { ValidateInputs } from '../../../utils/ValidateInputs';
 import { CreateButton } from '../../atoms/button/createButton';
@@ -36,7 +35,7 @@ export const InputField: FC = () => {
       setIsDigitsNotNumberErr(isDigitsNotNumberError);
       setIsDigitsLimitErr(isDigitsLimitError);
     } else {
-      const result: Result = generateText(inputText, digits);
+      const result = generateText(inputText, digits);
 
       dispatch(
         addOutputCard({
