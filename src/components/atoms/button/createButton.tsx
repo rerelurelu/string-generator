@@ -10,7 +10,7 @@ export const CreateButton: FC<Props> = (props) => {
   const { children, onClick } = props;
 
   return (
-    <Button w={200} bg="purple.500" color="purple.50" _hover={{ opacity: 0.8 }} onClick={onClick}>
+    <Button w={200} bg="purple.600" color="purple.50" _hover={{ opacity: 0.8 }} onClick={onClick}>
       {children}
     </Button>
   );
