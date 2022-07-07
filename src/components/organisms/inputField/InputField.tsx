@@ -10,7 +10,7 @@ import { CreateButton } from '../../atoms/button/createButton';
 
 export const InputField: FC = () => {
   const errMsg = {
-    inputTextErrMsg: '* 繰り返したい文字を入力してください',
+    inputTextErrMsg: '* 生成に使用したい文字を入力してください',
     digitsBlankErrMsg: '* 桁数に全角数字または半角数字を入力してください',
     digitsNotNumberErrMsg: '* 桁数には全角数字または半角数字を１以上の値で入力してください',
     digitsLimitErrMsg: '* 桁数には１００００以下の値を入力してください',
@@ -64,7 +64,7 @@ export const InputField: FC = () => {
             w="full"
             borderColor="gray.600"
             borderWidth={3}
-            placeholder="繰り返したい文字"
+            placeholder="生成に使用したい文字"
             focusBorderColor="purple.600"
             _hover={{ borderColor: 'gray.500' }}
             value={inputText}
