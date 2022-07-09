@@ -17,7 +17,7 @@ export const generateText = (inputText: string, digits: string): Result => {
   return { text: text, digits: digits };
 };
 
-const hankakuToZenkaku = (str: string): string => {
+export const hankakuToZenkaku = (str: string): string => {
   return str.replace(/[０-９]/g, (s) => {
     return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
   });
