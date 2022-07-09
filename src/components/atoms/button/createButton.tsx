@@ -1,12 +1,9 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { Button } from '@chakra-ui/react';
 
-type Props = {
-  children: ReactNode;
-  onClick: () => void;
-};
+import { CreateButtonProps } from '../../../types/createButtonProps';
 
-export const CreateButton: FC<Props> = (props) => {
+export const CreateButton: FC<CreateButtonProps> = (props) => {
   const { children, onClick } = props;
 
   return (
