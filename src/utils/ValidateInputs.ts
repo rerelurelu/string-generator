@@ -1,4 +1,5 @@
 import { Validation } from '../types/validation';
+import { hankakuToZenkaku } from './GenerateText';
 
 export const ValidateInputs = (inputText: string, digits: string): Validation => {
   const regex = /^[０-９0-9]+$/g;
@@ -11,6 +12,7 @@ export const ValidateInputs = (inputText: string, digits: string): Validation =>
   if (!isDigitsBlankError) {
     isDigitsNotNumberError = !regex.test(digits);
     if (!isDigitsNotNumberError) {
+      digits = hankakuToZenkaku(digits);
       isDigitsLimitError = Number(digits) === 0 || Number(digits) > 10000;
     }
   }
