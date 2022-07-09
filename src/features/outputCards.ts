@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type outputCard = {
-  id: string;
-  digits: string;
-  text: string;
-};
+import { outputCard } from '../types/outputCard';
 
 export const outputCardSlice = createSlice({
   name: 'outputCards',
@@ -13,8 +9,10 @@ export const outputCardSlice = createSlice({
     addOutputCard: (state: any, action: PayloadAction<outputCard>) => {
       state.value.unshift(action.payload);
     },
-    deleteOutputCard: (state: any, action: any) => {
-      state.value = state.value.filter((outputCard: any) => outputCard.id !== action.payload.id);
+    deleteOutputCard: (state: any, action: PayloadAction<outputCard>) => {
+      state.value = state.value.filter(
+        (outputCard: outputCard) => outputCard.id !== action.payload.id
+      );
     },
   },
 });
