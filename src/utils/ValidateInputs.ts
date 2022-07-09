@@ -11,7 +11,7 @@ export const ValidateInputs = (inputText: string, digits: string): Validation =>
   if (!isDigitsBlankError) {
     isDigitsNotNumberError = !regex.test(digits);
     if (!isDigitsNotNumberError) {
-      isDigitsLimitError = Number(digits) > 10000;
+      isDigitsLimitError = Number(digits) === 0 || Number(digits) > 10000;
     }
   }
 
